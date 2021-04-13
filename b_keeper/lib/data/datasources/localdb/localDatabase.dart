@@ -1,14 +1,14 @@
-import 'package:b_keeper/data/datasources/localdb/AccountDetailDao.dart';
-import 'package:b_keeper/data/datasources/models/AccountDetail.dart';
-import 'package:b_keeper/data/datasources/models/Category.dart';
+import 'package:b_keeper/data/datasources/localdb/AccountDetailsDao.dart';
+import 'package:b_keeper/data/datasources/models/AccountDetails.dart';
+import 'package:b_keeper/data/datasources/models/Categorys.dart';
 import 'package:b_keeper/data/datasources/models/Deposits.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 
 part 'LocalDatabase.g.dart';
 
 @UseMoor(
-  tables: [AccountDetail, Category, Deposits],
-  daos: [AccountDetailDao]
+  tables: [AccountDetails, Categorys, Deposits],
+  daos: [AccountDetailsDao]
 )
 class LocalDatabase extends _$LocalDatabase{
   
