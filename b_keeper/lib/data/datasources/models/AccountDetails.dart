@@ -2,8 +2,8 @@
 
 import 'package:moor_flutter/moor_flutter.dart';
 
-@DataClassName("account_detail")
-class AccountDetail extends Table{
+@DataClassName("accountDetail")
+class AccountDetails extends Table{
   IntColumn get id => integer().autoIncrement()();
   TextColumn get categoryId => text()();
   IntColumn get amount => integer()();
