@@ -16,5 +16,4 @@ class LocalDatabase extends _$LocalDatabase{
   
   @override
   int get schemaVersion => 1;
-  
 }
