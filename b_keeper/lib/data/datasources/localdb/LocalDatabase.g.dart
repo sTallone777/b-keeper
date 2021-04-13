@@ -712,15 +712,15 @@ class $CategorysTable extends Categorys
   }
 }
 
-class Deposits extends DataClass implements Insertable<Deposits> {
+class Deposit extends DataClass implements Insertable<Deposit> {
   final int id;
   final int currentBalance;
-  Deposits({@required this.id, @required this.currentBalance});
-  factory Deposits.fromData(Map<String, dynamic> data, GeneratedDatabase db,
+  Deposit({@required this.id, @required this.currentBalance});
+  factory Deposit.fromData(Map<String, dynamic> data, GeneratedDatabase db,
       {String prefix}) {
     final effectivePrefix = prefix ?? '';
     final intType = db.typeSystem.forDartType<int>();
-    return Deposits(
+    return Deposit(
       id: intType.mapFromDatabaseResponse(data['${effectivePrefix}id']),
       currentBalance: intType
           .mapFromDatabaseResponse(data['${effectivePrefix}current_balance']),
@@ -747,10 +747,10 @@ class Deposits extends DataClass implements Insertable<Deposits> {
     );
   }
 
-  factory Deposits.fromJson(Map<String, dynamic> json,
+  factory Deposit.fromJson(Map<String, dynamic> json,
       {ValueSerializer serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
-    return Deposits(
+    return Deposit(
       id: serializer.fromJson<int>(json['id']),
       currentBalance: serializer.fromJson<int>(json['currentBalance']),
     );
@@ -764,13 +764,13 @@ class Deposits extends DataClass implements Insertable<Deposits> {
     };
   }
 
-  Deposits copyWith({int id, int currentBalance}) => Deposits(
+  Deposit copyWith({int id, int currentBalance}) => Deposit(
         id: id ?? this.id,
         currentBalance: currentBalance ?? this.currentBalance,
       );
   @override
   String toString() {
-    return (StringBuffer('Deposits(')
+    return (StringBuffer('Deposit(')
           ..write('id: $id, ')
           ..write('currentBalance: $currentBalance')
           ..write(')'))
@@ -782,12 +782,12 @@ class Deposits extends DataClass implements Insertable<Deposits> {
   @override
   bool operator ==(dynamic other) =>
       identical(this, other) ||
-      (other is Deposits &&
+      (other is Deposit &&
           other.id == this.id &&
           other.currentBalance == this.currentBalance);
 }
 
-class DepositsCompanion extends UpdateCompanion<Deposits> {
+class DepositsCompanion extends UpdateCompanion<Deposit> {
   final Value<int> id;
   final Value<int> currentBalance;
   const DepositsCompanion({
@@ -798,7 +798,7 @@ class DepositsCompanion extends UpdateCompanion<Deposits> {
     this.id = const Value.absent(),
     @required int currentBalance,
   }) : currentBalance = Value(currentBalance);
-  static Insertable<Deposits> custom({
+  static Insertable<Deposit> custom({
     Expression<int> id,
     Expression<int> currentBalance,
   }) {
@@ -837,7 +837,7 @@ class DepositsCompanion extends UpdateCompanion<Deposits> {
   }
 }
 
-class $DepositsTable extends Deposits with TableInfo<$DepositsTable, Deposits> {
+class $DepositsTable extends Deposits with TableInfo<$DepositsTable, Deposit> {
   final GeneratedDatabase _db;
   final String _alias;
   $DepositsTable(this._db, [this._alias]);
@@ -873,7 +873,7 @@ class $DepositsTable extends Deposits with TableInfo<$DepositsTable, Deposits> {
   @override
   final String actualTableName = 'deposits';
   @override
-  VerificationContext validateIntegrity(Insertable<Deposits> instance,
+  VerificationContext validateIntegrity(Insertable<Deposit> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -894,9 +894,9 @@ class $DepositsTable extends Deposits with TableInfo<$DepositsTable, Deposits> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  Deposits map(Map<String, dynamic> data, {String tablePrefix}) {
+  Deposit map(Map<String, dynamic> data, {String tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
-    return Deposits.fromData(data, _db, prefix: effectivePrefix);
+    return Deposit.fromData(data, _db, prefix: effectivePrefix);
   }
 
   @override
